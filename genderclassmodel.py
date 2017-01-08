@@ -67,15 +67,15 @@ survival_table[ survival_table >= 0.5] = 1
 test_file = open('../test.csv', 'rb')
 test_file_obj = csv.reader(test_file)
 header = test_file_obj.next()
-
+print "test_file opens"
 # Also I open new file so I can write to it
 
 pred_file = open('../genderclassmodel.csv', 'wb')
 pred_file_obj = csv.writer(pred_file)
 pred_file_obj.writerow(["PassengerID", "Survived"])
-
+print "pred file creates"
 #bin up the price file
-for row in pred_file_obj:
+for row in test_file_obj:
 	for j in xrange(number_of_price_brackets):
 		#if there no fare then place of the ticket according to its class ClassName(object):
 		try:
@@ -93,12 +93,12 @@ for row in pred_file_obj:
 	#now we have the binned fare , passenger class, sex - we can 
 	# cross with our survival table
 	if row[3] == 'female':
-		pred_file_obj.writerow([row[0], "%d" % int(survival_table [0, float(row[1])-1, bin_fare])])
+		pred_file_obj.writerow([row[0], "%d" % int(survival_table[ 0, float(row[1])-1, bin_fare ])])
 	else:
-		pred_file_obj.writerow([row[0], "%d" % int(survival_table[1, float(row[1]) - 1, bin_fare])])
+		pred_file_obj.writerow([row[0], "%d" % int(survival_table[1, float(row[1]) - 1, bin_fare ])])
 
 #close our files
-
+print (survival_table)
 test_file.close()
 pred_file.close()
 
