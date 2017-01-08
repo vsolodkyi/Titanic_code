@@ -10,7 +10,7 @@ header = test_file_object.next()
 
 pred_file = open('../genderbasemodel.csv', 'wb')
 pred_file_object = csv.writer(pred_file)
-pred_file_object.writerow["PassengerId", "Survived"]
+pred_file_object.writerow(["PassengerId", "Survived"])
 
 #repeat in each row
 
@@ -20,6 +20,6 @@ for row in test_file_object:
 	else:
 		pred_file_object.writerow([row[0], '0'])
 test_file.close()
-test_file_object.close()
+pred_file.close()
 
 
