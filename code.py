@@ -3,7 +3,7 @@ import csv as csv
 import numpy as np 
 #import csv file
 
-csv_file_object = csv.reader(open("../Titanic.csv", 'rb'))
+csv_file_object = csv.reader(open("../train.csv", 'rb'))
 
 #escape first line which is header line
 header = csv_file_object.next()
@@ -30,8 +30,8 @@ women_stats = data[0::,4] == "female"
 men_stats = data[0::,4] != "female"
 #print women_stats
 #print data[women_stats,::]
-women_onboard = data[women_stats,-2].astype(np.float)
-men_onboard = data[men_stats,-2].astype(np.float)
+women_onboard = data[women_stats,1].astype(np.float)
+men_onboard = data[men_stats,1].astype(np.float)
 #print (women_onboard)
 proportion_women_survived = \
 	np.sum(women_onboard)/np.size(women_onboard)
