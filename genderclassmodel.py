@@ -98,7 +98,7 @@ for row in test_file_obj:
 		pred_file_obj.writerow([row[0], "%d" % int(survival_table[1, float(row[1]) - 1, bin_fare ])])
 
 #close our files
-print (survival_table)
+#print (survival_table)
 test_file.close()
 pred_file.close()
 
